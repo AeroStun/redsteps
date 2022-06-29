@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.1
+Name=RedSteps GTK
+GenericName=RedSteps GTK
+Comment=Screen temperature gamma offset
+TryExec=redsteps-gtk
+Exec=redsteps-gtk
+Keywords=Gamma
+Terminal=false
+Type=Application
+Categories=Graphics;Utility;

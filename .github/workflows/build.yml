@@ -1,0 +1,20 @@
+name: Build
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  build-linux:
+    name: Build on Ubuntu Jammy
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:jammy
+    env:
+      DEBIAN_FRONTEND: "noninteractive"
+    steps:
+      - uses: actions/checkout@v3
+      - name: Fetch deps
+        run: |
+          apt-get update -y
+          apt-get install -y cmake ninja-build pkg-config g++ libxxf86vm-dev libgtkmm-3.0-dev
+      - name: CMake configure
+        run: cmake -G Ninja -DBUILD_GUI=Yes -B dist
+      - name: CMake build
+        run: cmake --build ./dist
